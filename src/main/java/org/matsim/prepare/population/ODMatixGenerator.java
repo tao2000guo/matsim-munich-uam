@@ -25,8 +25,8 @@ import java.util.*;
 
 //This class generator the ODMatrix from the trips file
 public class ODMatixGenerator {
-    private static final String OUTPUT_FILE = "scenarios/basicInputFile/ODMatrix.csv";
-    private static final String TRIP_FILE="scenarios/basicInputFile/uam.10.trips.csv";
+    private static final String OUTPUT_FILE = "scenarios/basicInputFile/ODMatrix_allMode_3.csv";
+    private static final String TRIP_FILE="scenarios/basicInputFile/uam.output_trips_3.csv";
     private static final String SHAPE_FILE = "E:\\Project seminar\\matsim-munich-uam0118\\scenarios\\shapeFile\\MunichZoneSystem.shp";
 
     public static void main(String[] args) throws IOException {
@@ -38,10 +38,12 @@ public class ODMatixGenerator {
         File outPutFIle=new File(OUTPUT_FILE);
         BufferedWriter out = new BufferedWriter(new FileWriter(outPutFIle));
 // create your iterator for your map
-        // last record in the map or when we have printed enough records
+        // last record in the map or when we have printed enough records\
+        out.write("Origin;Destination;TravelTime;Mode"+"\n");
         for (Map.Entry<Integer, String> pairs : odMatrix.entrySet()) {
 // the key/value pair is stored here in pairs
             // since you only want the value, we only care about pairs.getValue(), which is written to out
+
             out.write(pairs.getValue()+ "\n");
         }
         out.close();
